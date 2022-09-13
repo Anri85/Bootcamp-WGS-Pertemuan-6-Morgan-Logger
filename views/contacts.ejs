@@ -1,0 +1,45 @@
+<h1>Contact Page</h1>
+<div class="d-flex mt-2 mb-2">
+    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#createModal">Create New</button>
+</div>
+<table class="table table-secondary">
+    <thead class="table-danger">
+        <tr>
+            <th scope="col">No</th>
+            <th scope="col">Name</th>
+            <th scope="col">Email</th>
+            <th scope="col">Mobile</th>
+            <th scope="col">Action</th>
+        </tr>
+    </thead>
+    <% if (cont.length < 1) { %>
+    <tbody>
+        <tr>
+            <th scope="row">1</th>
+            <td>Contact is empty</td>
+            <td>Contact is empty</td>
+            <td>Contact is empty</td>
+            <td>
+                <button type="button" class="btn btn-primary disabled m-1 btn-sm">Update</button><button type="button" class="btn btn-danger disabled m-1 btn-sm">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    <% } else { %> <% cont.forEach((c, i) => { %>
+    <tbody>
+        <tr>
+            <th scope="row"><%= i + 1 %></th>
+            <td><%= c.name %></td>
+            <% if (c.email === '') { %>
+            <td>-</td>
+            <% } else { %>
+            <td><%= c.email %></td>
+            <% } %>
+            <td><%= c.mobile %></td>
+            <td>
+                <a href="/contacts/<%= c.name %>" class="btn btn-primary m-1 btn-sm">Update</a>
+                <a href="/contacts/delete/<%= c.name %>" class="btn btn-danger m-1 btn-sm" onclick="return confirm('Hapus?')">Delete</button>
+            </td>
+        </tr>
+    </tbody>
+    <% }) %> <% } %>
+</table>

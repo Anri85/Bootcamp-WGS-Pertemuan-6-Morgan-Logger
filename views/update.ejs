@@ -1,0 +1,46 @@
+<div class="row-2 d-flex">
+    <div class="modal-body sm">
+        <form action="/contacts/update/<%= detail.name %> " method="post">
+            <div class="col-sm-9">
+                <div class="mb-1">
+                    <label for="exampleFormControlInput1" class="form-label">Name</label>
+                    <input type="text" class="form-control" name="newName" value="<%= detail.name %>" required />
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="mb-1">
+                    <label for="exampleFormControlInput1" class="form-label">Email</label>
+                    <input type="email" class="form-control" name="email" value="<%= detail.email %>" />
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <div class="mb-1">
+                    <label for="exampleFormControlInput1" class="form-label">Mobile</label>
+                    <input type="number" class="form-control" name="mobile" required value="<%= detail.mobile %>" />
+                </div>
+            </div>
+            <div class="col-sm-9">
+                <button type="submit" class="btn btn-primary mt-2">Save changes</button>
+            </div>
+        </form>
+    </div>
+
+    <div class="col-sm-4">
+        <div class="card p-2">
+        <div class="card-body">
+            <div class="text-center mb-1">
+                <img src="https://picsum.photos/200" class="rounded img-thumbnail" alt="image">
+                <h3 class="card-title"><%= detail.name %></h3>
+            <h4 class="card-text"><% if (detail.email === '') { %>
+                -
+                <% } else { %>
+                    <%= detail.email %>
+                    <% } %></h4>
+                    <h4 class="card-text"><%= detail.mobile %></h3>
+                        <a href="/contacts" class="btn btn-success mt-1">Go Back!</a>
+                    </div>
+        </div>
+        </div>
+    </div>
+
+</div>
